@@ -1,0 +1,12 @@
+node_modules
+.idea
+dist
+*.env
+*.env.*
+!.env.example
+
+# Firebae
+.firebase
+*.key
+*.log
+key/*.json

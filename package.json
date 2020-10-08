@@ -1,0 +1,43 @@
+{
+  "name": "@kulkul/ngecilin",
+  "version": "1.0.0",
+  "description": "Chrome Extension to shorten your looooong URL",
+  "main": "index.js",
+  "repository": "git@github.com:kulkultech/ngecilin.git",
+  "author": "kulkultech",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "npm run clean && env VERSION=$(node -p \"require('./package.json').version\") npx webpack",
+    "dev": "webpack-dev-server"
+  },
+  "dependencies": {
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^6.2.0",
+    "dotenv-webpack": "^3.0.0",
+    "eslint": "^7.10.0",
+    "html-webpack-plugin": "^4.5.0",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.0",
+    "prettier": "^2.1.2",
+    "pug": "^3.0.0",
+    "pug-loader": "^2.4.0",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-manifest-plugin": "^2.2.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/*.js": "eslint --fix",
+    "functions/*.js": "eslint --fix",
+    "src/*.{js,json,html}": [
+      "prettier --write"
+    ]
+  }
+}
