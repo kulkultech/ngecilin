@@ -27,3 +27,9 @@ Chrome Extension to shorten your looooong URL
 - You can build the chrome extension using the following command, and the build will appear in `dist` folder.
 
 		yarn build
+
+- And then you can register your extension by opening extension url/setting in your Browser.
+  - Edge: `edge://extensions`
+  - Chrome: `chrome://extensions`
+
+  Then you can set your extension setting to developer mode and load unpacked extension from our `dist` directory.
