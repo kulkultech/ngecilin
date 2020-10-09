@@ -10,3 +10,4 @@ dist
 *.key
 *.log
 key/*.json
+key/key.pem

@@ -8,8 +8,14 @@
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "npm run clean && env VERSION=$(node -p \"require('./package.json').version\") npx webpack",
-    "dev": "webpack-dev-server"
+    "build": "yarn clean && env VERSION=$(node -p \"require('./package.json').version\") npx webpack",
+    "dev": "webpack-dev-server",
+    "setup:key": "cp key/manifest.key.example key/manifest.key",
+    "setup:dotenv": "touch .env",
+    "dev:setup": "yarn setup:key && yarn setup:dotenv",
+    "gen:cert": "openssl genrsa 2048 | openssl pkcs8 -topk8 -nocrypt -out key/key.pem",
+    "gen:key": "openssl rsa -in key/key.pem -pubout -outform DER | openssl base64 -A",
+    "gen:id": "openssl rsa -in key/key.pem -pubout -outform DER | shasum -a 256 | head -c32 | tr 0-9a-f a-p"
   },
   "dependencies": {
     "webpack": "^4.44.2",
