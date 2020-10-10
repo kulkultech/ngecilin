@@ -13,6 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const shortenText = document.querySelector('#form>input[type=text]');
   const shortenBtn = document.querySelector('#form>button');
 
+  chrome.tabs.getSelected(null, (tab) => {
+    shortenText.value = tab.url;
+  });
+
   shortenBtn.addEventListener('click', async (e) => {
     wrapper.querySelector('#shorten').innerHTML = 'loading...';
     shortenUrl(shortenText.value).then((result) => {
