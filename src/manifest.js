@@ -6,7 +6,7 @@ const manifest = {
   version: process.env.VERSION,
   description: 'Chrome Extension to shorten your looooong URL.',
   manifest_version: 2,
-  permissions: ['tabs', 'activeTab', '<all_urls>'],
+  permissions: ['tabs', 'activeTab'],
   content_security_policy: "script-src 'self'; object-src 'self'",
   options_page: 'options/index.html',
   background: {
