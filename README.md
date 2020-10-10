@@ -1,6 +1,7 @@
 # ngecilin
 
 [![Made in Indonesia](https://made-in-indonesia.github.io/made-in-indonesia.svg)](https://github.com/made-in-indonesia/made-in-indonesia)
+[![Build Status](https://travis-ci.org/kulkultech/ngecilin.svg?branch=master)](https://travis-ci.org/kulkultech/ngecilin)
 
 Chrome Extension to shorten your looooong URL
 
