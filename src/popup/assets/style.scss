@@ -1,6 +1,12 @@
 $body-width: 420px;
 $body-height: 128px;
-$footer-height: 33px;
+
+a {
+  color: #4285f4;
+  display: inline;
+  font-size: 11px;
+  text-decoration: none;
+}
 
 html {
   background: white;
@@ -12,58 +18,49 @@ html {
   }
 }
 
+$footer-padding: 10px;
+$footer-height: 12px;
+
 #ngecilin-wrapper {
   width: $body-width;
-  height: $body-height - $footer-height;
+  height: $body-height - $footer-height - ($footer-padding * 2);
   overflow: hidden;
   background: white;
 
   #form {
-    padding: 10px;
-    margin: 10px 30px;
+    margin: 20px 30px 10px 30px;
     text-align: initial;
     max-width: $body-width;
-    height: $body-height - $footer-height;
     overflow: hidden;
-    // background: teal;
     input {
       font-size: 14px;
       margin: 2px;
-      min-height: 30px;
+      height: 25px;
       width: 70%;
       padding: 1px 2px;
     }
     button {
       cursor: default;
-      font-size: 11px;
-      font-weight: bold;
-      text-align: center;
-      white-space: nowrap;
-      margin-right: 16px;
-      height: 27px;
-      line-height: 27px;
-      min-width: 54px;
-      min-height: 30px;
-      outline: 0px;
+      height: 30px;
       padding: 0 8px;
     }
   }
 
   #shorten {
-    // padding: 10px;
-    // margin: 10px 30px;
-    // text-align: initial;
-    // max-width: $body-width;
-    // height: $body-height - $footer-height;
-    // overflow: hidden;
+    margin: 0 30px;
+    text-align: initial;
+    max-width: $body-width;
+    overflow: hidden;
+    span {
+      margin-left: 2px;
+    }
   }
 }
 
 footer {
-  $padding: 10px;
   bottom: 0;
   width: $body-width;
-  padding: $padding;
+  padding: $footer-padding;
   height: $footer-height;
   background-color: #f0f0f0;
   color: #636363;

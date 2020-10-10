@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 require('dotenv').config();
 
 const manifest = {
@@ -5,7 +6,7 @@ const manifest = {
   version: process.env.VERSION,
   description: 'Chrome Extension to shorten your looooong URL.',
   manifest_version: 2,
-  permissions: [],
+  permissions: ['tabs', 'activeTab', '<all_urls>'],
   content_security_policy: "script-src 'self'; object-src 'self'",
   options_page: 'options/index.html',
   background: {
@@ -22,8 +23,7 @@ const manifest = {
       48: 'assets/icons/icn-48.png',
       128: 'assets/icons/icn-128.png',
     },
-    default_title: 'Ngecilin',
-    default_popup: 'popup/index.html'
+    default_popup: 'popup/index.html',
   },
   commands: {
     _execute_browser_action: {
@@ -55,5 +55,5 @@ if (process.env.NODE_ENV === 'development') {
 
 module.exports = {
   manifest,
-  filters: Object.keys(manifest)
+  filters: Object.keys(manifest),
 };

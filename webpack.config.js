@@ -7,7 +7,6 @@ const manifestJs = require('./src/manifest.js');
 const CopyPlugin = require('copy-webpack-plugin');
 const HandlebarsPlugin = require("handlebars-webpack-plugin");
 
-
 const background = {
   entry: {
     index: './src/background/index.js',
@@ -131,6 +130,10 @@ module.exports = [
   options,
   popup,
 ].map((bundle) => Object.assign(bundle, {
+  // node: {
+  //   // to fixed Error: Can't resolve 'fs'
+  //   fs: 'empty'
+  // },
   watch: true,
   mode,
   devServer: {

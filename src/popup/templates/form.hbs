@@ -1,5 +1,9 @@
 <div id="form">
   <input type="text">
-  <button>kecilin</button>
-  shorten url: <a href={{shortenlink}}>{{shortenlink}}</a>
+  <button>shorten</button>
+</div>
+<div id="shorten">
+  {{#if shortenurl}}
+  {{> shorten shortenurl=shortenurl}}
+  {{/if}}
 </div>
