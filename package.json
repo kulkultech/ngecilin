@@ -18,19 +18,31 @@
     "gen:id": "openssl rsa -in key/key.pem -pubout -outform DER | shasum -a 256 | head -c32 | tr 0-9a-f a-p"
   },
   "dependencies": {
+    "@kulkul/tinyurl-client": "^1.0.6",
+    "dotenv": "^8.2.0",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^6.2.0",
+    "css-loader": "^4.3.0",
     "dotenv-webpack": "^3.0.0",
     "eslint": "^7.10.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "extract-loader": "^5.1.0",
+    "file-loader": "^6.1.1",
+    "handlebars": "^4.7.6",
+    "handlebars-loader": "^1.7.1",
+    "handlebars-webpack-plugin": "^2.1.1",
     "html-webpack-plugin": "^4.5.0",
     "husky": "^4.3.0",
     "lint-staged": "^10.4.0",
     "prettier": "^2.1.2",
     "pug": "^3.0.0",
     "pug-loader": "^2.4.0",
+    "sass": "^1.27.0",
+    "sass-loader": "^10.0.3",
     "webpack-dev-server": "^3.11.0",
     "webpack-manifest-plugin": "^2.2.0"
   },
