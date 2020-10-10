@@ -62,8 +62,8 @@ const assets = [
   new CopyPlugin({
     patterns: [
       {
-        from: './src/assets',
-        to: './assets',
+        from: './src/assets/',
+        to: './assets/',
       },
     ]
   })];
@@ -84,8 +84,8 @@ const popup = {
     new CopyPlugin({
       patterns: [
         {
-          from: './src/popup/assets',
-          to: './popup/assets',
+          from: './src/popup/assets/',
+          to: './popup/assets/',
           globOptions: {
             ignore: ['**/*.scss'],
           },
