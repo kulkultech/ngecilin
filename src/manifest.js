@@ -22,6 +22,8 @@ const manifest = {
       48: 'assets/icons/icn-48.png',
       128: 'assets/icons/icn-128.png',
     },
+    default_title: 'Ngecilin',
+    default_popup: 'popup/index.html'
   },
   commands: {
     _execute_browser_action: {

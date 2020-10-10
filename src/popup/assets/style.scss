@@ -1,0 +1,74 @@
+$body-width: 420px;
+$body-height: 128px;
+$footer-height: 33px;
+
+html {
+  background: white;
+  body {
+    margin: auto;
+    width: $body-width;
+    height: $body-height;
+    background: white;
+  }
+}
+
+#ngecilin-wrapper {
+  width: $body-width;
+  height: $body-height - $footer-height;
+  overflow: hidden;
+  background: white;
+
+  #form {
+    padding: 10px;
+    margin: 10px 30px;
+    text-align: initial;
+    max-width: $body-width;
+    height: $body-height - $footer-height;
+    overflow: hidden;
+    // background: teal;
+    input {
+      font-size: 14px;
+      margin: 2px;
+      min-height: 30px;
+      width: 70%;
+      padding: 1px 2px;
+    }
+    button {
+      cursor: default;
+      font-size: 11px;
+      font-weight: bold;
+      text-align: center;
+      white-space: nowrap;
+      margin-right: 16px;
+      height: 27px;
+      line-height: 27px;
+      min-width: 54px;
+      min-height: 30px;
+      outline: 0px;
+      padding: 0 8px;
+    }
+  }
+
+  #shorten {
+    // padding: 10px;
+    // margin: 10px 30px;
+    // text-align: initial;
+    // max-width: $body-width;
+    // height: $body-height - $footer-height;
+    // overflow: hidden;
+  }
+}
+
+footer {
+  $padding: 10px;
+  bottom: 0;
+  width: $body-width;
+  padding: $padding;
+  height: $footer-height;
+  background-color: #f0f0f0;
+  color: #636363;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  // margin-top: 9px;
+  text-align: center;
+}
