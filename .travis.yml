@@ -1,0 +1,23 @@
+_test_scripts: &_test_scripts
+  script:
+    - yarn dev:setup
+    - yarn build
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
+
+matrix:
+  include:
+    - language: node_js
+      node_js: "10"
+      <<: *_test_scripts
+
+    - language: node_js
+      node_js: "11"
+      <<: *_test_scripts
+
+    - language: node_js
+      node_js: "12"
+      <<: *_test_scripts
