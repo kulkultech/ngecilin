@@ -18,7 +18,7 @@
     "gen:id": "openssl rsa -in key/key.pem -pubout -outform DER | shasum -a 256 | head -c32 | tr 0-9a-f a-p"
   },
   "dependencies": {
-    "@kulkul/tinyurl-client": "^1.0.6",
+    "@kulkul/tinyurl-client": "^1.0.7",
     "dotenv": "^8.2.0",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
