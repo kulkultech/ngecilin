@@ -53,10 +53,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@kulkul/tinyurl-client@^1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@kulkul/tinyurl-client/-/tinyurl-client-1.0.6.tgz#c567f50764701ce8c9dfe0aae5bd2aa79c03da16"
-  integrity sha512-PHetqk3oh8jGz+82dXnoPev808uhUlo1JW1BAzB5u8HOkms5NoCzQbtXUID53Nn0r/l5+RVA1pVbgqdgzrcFNw==
+"@kulkul/tinyurl-client@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@kulkul/tinyurl-client/-/tinyurl-client-1.0.7.tgz#b6accaad871e5d8ddc9b01ff0b206e40b0ea7b6e"
+  integrity sha512-MWTs55Wt8Kl/JdDlXfugtTIjACqKMOIpz//DskG9EA0v2tPeNTyyvL8w3mTpSvyVlIzmuvqgB/RcvglZc2mDtw==
 
 "@nodelib/fs.scandir@2.1.3":
   version "2.1.3"
