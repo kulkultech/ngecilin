@@ -8,16 +8,6 @@ cache:
   directories:
     - node_modules
 
-matrix:
-  include:
-    - language: node_js
-      node_js: "10"
-      <<: *_test_scripts
-
-    - language: node_js
-      node_js: "11"
-      <<: *_test_scripts
-
-    - language: node_js
-      node_js: "12"
-      <<: *_test_scripts
+language: node_js
+node_js: "10"
+<<: *_test_scripts
