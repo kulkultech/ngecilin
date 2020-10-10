@@ -134,7 +134,7 @@ module.exports = [
   //   // to fixed Error: Can't resolve 'fs'
   //   fs: 'empty'
   // },
-  watch: true,
+  watch: (process.env.NODE_ENV === 'development'),
   mode,
   devServer: {
     contentBase: 'dist',

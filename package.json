@@ -9,7 +9,7 @@
   "scripts": {
     "clean": "rm -rf dist",
     "build": "yarn clean && env VERSION=$(node -p \"require('./package.json').version\") npx webpack",
-    "dev": "yarn build --watch --progress",
+    "dev": "webpack-dev-server",
     "setup:key": "cp key/manifest.key.example key/manifest.key",
     "setup:dotenv": "touch .env",
     "dev:setup": "yarn setup:key && yarn setup:dotenv",

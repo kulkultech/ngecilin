@@ -1,9 +1,9 @@
-import formTemplate from "./templates/form.hbs";
-import shortenTemplate from "./templates/shorten.hbs";
-import footerTemplate from "./templates/footer.hbs";
+import formTemplate from './templates/form.hbs';
+import shortenTemplate from './templates/shorten.hbs';
+import footerTemplate from './templates/footer.hbs';
 import shortenUrl from './scripts/shorten-url';
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
   const wrapper = document.getElementById('ngecilin-wrapper');
   const form = document.createElement('div');
 
