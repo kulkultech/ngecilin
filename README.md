@@ -5,6 +5,8 @@
 
 Chrome Extension to shorten your looooong URL
 
+![Screenshot of Ngecilin in action](./docs/screenshot.gif)
+
 ## Getting started
 
 - Install dependencies
