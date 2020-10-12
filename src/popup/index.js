@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
   form.innerHTML = formTemplate();
   wrapper.appendChild(form);
 
-  const shortenText = document.querySelector('#form>input[type=text]');
+  const shortenText = document.querySelector('#form>input[name=url]');
+  const shortenAlias = document.querySelector('#form>input[name=alias]');
   const shortenBtn = document.querySelector('#form>button');
 
   chrome.tabs.getSelected(null, (tab) => {
@@ -19,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   shortenBtn.addEventListener('click', async (e) => {
     wrapper.querySelector('#shorten').innerHTML = 'loading...';
-    shortenUrl(shortenText.value).then((result) => {
+    shortenUrl(shortenText.value, shortenAlias.value).then((result) => {
       wrapper.querySelector('#shorten').innerHTML = shortenTemplate({ shortenurl: result });
     });
   }, false);
