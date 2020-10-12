@@ -1,6 +1,7 @@
 import formTemplate from './templates/form.hbs';
 import shortenTemplate from './templates/shorten.hbs';
 import footerTemplate from './templates/footer.hbs';
+import errorTemplate from './templates/error.hbs';
 import shortenUrl from './scripts/shorten-url';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -22,6 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
     wrapper.querySelector('#shorten').innerHTML = 'loading...';
     shortenUrl(shortenText.value, shortenAlias.value).then((result) => {
       wrapper.querySelector('#shorten').innerHTML = shortenTemplate({ shortenurl: result });
+    }).catch(() => {
+      wrapper.querySelector('#shorten').innerHTML = errorTemplate({ error: "Alias can't be used or already taken" });
     });
   }, false);
 
