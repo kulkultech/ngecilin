@@ -39,6 +39,6 @@ Chrome Extension to shorten your looooong URL
 
 # Installation  
 
-<a href="https://https://chrome.google.com/webstore/detail/ngecilin-extension/hbcmhfleidhgnfhfchencfkefmabfkhe">
+<a href="https://chrome.google.com/webstore/detail/ngecilin-extension/hbcmhfleidhgnfhfchencfkefmabfkhe">
 <img src="docs/chrome.png" alt="Available on chrome store" width="200px">
 </a>
