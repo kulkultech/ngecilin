@@ -36,3 +36,9 @@ Chrome Extension to shorten your looooong URL
   - Chrome: `chrome://extensions`
 
   Then you can set your extension setting to developer mode and load unpacked extension from our `dist` directory.
+
+# Installation  
+
+<a href="https://https://chrome.google.com/webstore/detail/ngecilin-extension/hbcmhfleidhgnfhfchencfkefmabfkhe">
+<img src="docs/chrome.png" alt="Available on chrome store" width="200px">
+</a>
