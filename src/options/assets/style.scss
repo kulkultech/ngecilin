@@ -1,0 +1,32 @@
+body {
+  background-color: #eee;
+  font-family: arial, sans-serif;
+  font-size: 13px;
+}
+
+#ngecilin-options-wrapper {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin: 40px auto 20px;
+  padding: 32px;
+  width: 650px;
+
+  h1 {
+    color: #333333;
+    font-size: 1.5em;
+    margin: 0.7em 0;
+    text-align: center;
+  }
+}
+
+footer {
+  margin: auto;
+  bottom: 0;
+  background-color: #f0f0f0;
+  color: #636363;
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  // margin-top: 9px;
+  text-align: center;
+}
