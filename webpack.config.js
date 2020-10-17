@@ -1,11 +1,11 @@
 const Dotenv = require('dotenv-webpack');
 const path = require('path');
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ManifestPlugin = require('webpack-manifest-plugin');
+
 const mode = 'production';
-const manifestJs = require('./src/manifest.js');
 const CopyPlugin = require('copy-webpack-plugin');
-const HandlebarsPlugin = require("handlebars-webpack-plugin");
+const HandlebarsPlugin = require('handlebars-webpack-plugin');
+const manifestJs = require('./src/manifest.js');
 
 const background = {
   entry: {
@@ -23,27 +23,39 @@ const background = {
 };
 
 const options = {
-  entry: {
-    index: './src/options/index.js',
-  },
+  entry: ['./src/options/index.js', './src/options/assets/style.scss'],
   output: {
     filename: './options/index.js',
   },
   plugins: [
     new Dotenv({
-      path: './.env', // Path to .env file (this is the default)
-      safe: false, // load .env.example (defaults to "false" which does not use dotenv-safe)
+      path: './.env',
+      safe: false,
     }),
-    new HtmlWebpackPlugin({
-      template: './src/options/index.pug',
-      filename: './options/index.html',
+    new HandlebarsPlugin({
+      entry: './src/options/index.hbs',
+      output: './dist/options/index.html',
     }),
   ],
   module: {
     rules: [
       {
-        test: require.resolve('./src/options/index.pug'),
-        use: ['pug-loader'],
+        test: /\.scss$/,
+        loaders: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'options/assets/style.css',
+            },
+          },
+          'extract-loader',
+          'css-loader',
+          'sass-loader',
+        ],
+      },
+      {
+        test: /\.hbs$/,
+        loader: 'handlebars-loader',
       },
     ],
   },
@@ -65,14 +77,12 @@ const assets = [
         from: './src/assets/',
         to: './assets/',
       },
-    ]
-  })];
+    ],
+  }),
+];
 
 const popup = {
-  entry: [
-    './src/popup/index.js',
-    './src/popup/assets/style.scss',
-  ],
+  entry: ['./src/popup/index.js', './src/popup/assets/style.scss'],
   output: {
     filename: './popup/index.js',
   },
@@ -90,7 +100,7 @@ const popup = {
             ignore: ['**/*.scss'],
           },
         },
-      ]
+      ],
     }),
     new HandlebarsPlugin({
       entry: './src/popup/index.hbs',
@@ -117,10 +127,12 @@ const popup = {
       },
       {
         test: /\.hbs$/,
-        loader: "handlebars-loader",
+        loader: 'handlebars-loader',
         // fix: https://github.com/LearnWebCode/handlebars-webpack/blob/master/webpack.config.js
-        options: { helperDirs: path.resolve(__dirname, "./src/popup/templates/helpers") }
-      }
+        options: {
+          helperDirs: path.resolve(__dirname, './src/popup/templates/helpers'),
+        },
+      },
     ],
   },
 };
@@ -130,10 +142,6 @@ module.exports = [
   options,
   popup,
 ].map((bundle) => Object.assign(bundle, {
-  // node: {
-  //   // to fixed Error: Can't resolve 'fs'
-  //   fs: 'empty'
-  // },
   watch: (process.env.NODE_ENV === 'development'),
   mode,
   devServer: {

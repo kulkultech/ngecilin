@@ -10,6 +10,7 @@
     "clean": "rm -rf dist",
     "build": "yarn clean && env VERSION=$(node -p \"require('./package.json').version\") npx webpack",
     "dev": "webpack-dev-server",
+    "lint": "npx eslint --fix \"src/**/*.js\" && npx prettier --write \"src/**/*.{js,jsx,}\"",
     "setup:key": "cp key/manifest.key.example key/manifest.key",
     "setup:dotenv": "touch .env",
     "dev:setup": "yarn setup:key && yarn setup:dotenv",
