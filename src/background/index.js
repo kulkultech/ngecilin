@@ -1,6 +1,4 @@
-
-chrome.browserAction.onClicked.addListener(function (tab) {
-  alert('jos');
+chrome.browserAction.onClicked.addListener(() => {
   // console.log('Injecting content script(s)');
   // //On Firefox document.body.textContent is probably more appropriate
   // chrome.tabs.executeScript(tab.id, {
