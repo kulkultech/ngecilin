@@ -1,7 +1,7 @@
 import footerTemplate from './templates/footer.hbs';
 import bodyTemplate from './templates/body.hbs';
 import { storageSync } from '../commons/helpers';
-import { shortIo } from '../commons/variables';
+import { shortIo, tinyURL } from '../commons/variables';
 
 document.addEventListener('DOMContentLoaded', () => {
   const wrapper = document.getElementById('ngecilin-options-wrapper');
@@ -61,5 +61,13 @@ window.onload = async () => {
     setTimeout(() => {
       saveStatus.style.opacity = 0;
     }, 1 * 1000);
+  });
+
+  form.addEventListener('reset', () => {
+    shortenerProvider
+      .querySelector(`option[value=${tinyURL}]`)
+      .setAttribute('selected', true);
+    rowApiKey.classList.add('d-none');
+    apiKey.value = '';
   });
 };

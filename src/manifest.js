@@ -18,10 +18,10 @@ const manifest = {
   browser_action: {
     default_title: 'Ngecilin Extension',
     default_icon: {
-      16: 'assets/icons/icn-16.png',
-      32: 'assets/icons/icn-32.png',
-      48: 'assets/icons/icn-48.png',
-      128: 'assets/icons/icn-128.png',
+      16: 'assets/icons/icn-kulkul-16.png',
+      32: 'assets/icons/icn-kulkul-32.png',
+      48: 'assets/icons/icn-kulkul-48.png',
+      128: 'assets/icons/icn-kulkul-128.png',
     },
     default_popup: 'popup/index.html',
   },
@@ -35,10 +35,10 @@ const manifest = {
     },
   },
   icons: {
-    16: 'assets/icons/icn-16.png',
-    32: 'assets/icons/icn-32.png',
-    48: 'assets/icons/icn-48.png',
-    128: 'assets/icons/icn-128.png',
+    16: 'assets/icons/icn-kulkul-16.png',
+    32: 'assets/icons/icn-kulkul-32.png',
+    48: 'assets/icons/icn-kulkul-48.png',
+    128: 'assets/icons/icn-kulkul-128.png',
   },
   // oauth2: {
   //   client_id: process.env.OAUTH2_CLIENT_ID,
