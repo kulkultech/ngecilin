@@ -21,12 +21,10 @@ jobs:
       script: *_test_scripts
     - stage: deploy
       before_script:
-        - apt-get update
-        - apt-get install -y jq curl zip
+        - sudo apt-get update
+        - sudo apt-get install -y jq curl zip
       script: *_deploy_scripts
-      branches:
-        only:
-          - master
+      if: branch = master
 
 env:
   global:
