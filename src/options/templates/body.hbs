@@ -7,29 +7,32 @@
   </div>
 </div>
 
-<div class="row mb-3">
-  <div class="col-md-3">Shortener provide:</div>
-  <div class="col-md-8 form-group">
-    <select class="custom-select custom-select-sm">
-      <option value="tiny-url">TinyURL</option>
-      <option value="bit-ly">BitLy</option>
-      <option value="short-io">Short.io</option>
-    </select>
+<form method="post" id="options-form">
+  <div class="row mb-3">
+    <div class="col-md-3">Shortener provider</div>
+    <div class="col-md-8 form-group">
+      <select name="shortenerProvider" class="custom-select custom-select-sm">
+        <option value={{variables 'tinyURL'}}>TinyURL</option>
+        <option value={{variables 'bitLy'}}>BitLy</option>
+        <option value={{variables 'shortIo'}}>Short.io</option>
+      </select>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-md-3">API Key:</div>
-  <div class="col-md-8 form-group">
-    <textarea class="form-control" name="" id="" cols="50" rows="5"></textarea>
+  <div id="row-api-key" class="row d-none">
+    <div class="col-md-3">API Key</div>
+    <div class="col-md-8 form-group">
+      <textarea class="form-control" name="apiKey" cols="50" rows="5"></textarea>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-md-3">
-    <button class="btn btn-sm btn-primary" type="submit">
-      Save
-    </button>
-    <button class="btn btn-sm btn-secondary ml-2" type="button">
-      Reset
-    </button>
+  <div class="row">
+    <div class="col-md-6 d-flex">
+      <button class="btn btn-sm btn-primary" type="submit">
+        Save
+      </button>
+      <button class="btn btn-sm btn-secondary ml-2 mr-2" type="reset">
+        Reset
+      </button>
+      <span id="save-status" style="display:none">Options saved.</span>
+    </div>
   </div>
-</div>
+</form>

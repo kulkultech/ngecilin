@@ -30,3 +30,15 @@ footer {
   // margin-top: 9px;
   text-align: center;
 }
+
+.btn:focus {
+  outline: none !important;
+  box-shadow: none;
+}
+
+#save-status {
+  background-color: #fff1a8;
+  font-weight: bold;
+  margin-left: 10px;
+  padding: 6px;
+}
