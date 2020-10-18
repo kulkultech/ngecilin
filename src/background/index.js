@@ -13,6 +13,7 @@ chrome.runtime.onInstalled.addListener(async () => {
     if (!data.shortenerProvider) {
       storageSync.set({
         shortenerProvider: tinyURL,
+        domain: '',
         apiKey: '',
       });
     }

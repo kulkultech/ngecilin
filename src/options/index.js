@@ -16,7 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 window.onload = async () => {
   const rowApiKey = document.getElementById('row-api-key');
+  const rowDomain = document.getElementById('row-domain');
   const apiKey = rowApiKey.querySelector('textarea');
+  const domain = rowDomain.querySelector('input[name=domain]');
   const shortenerProvider = document.querySelector(
     'select[name=shortenerProvider]',
   );
@@ -25,20 +27,25 @@ window.onload = async () => {
     const isShortIo = shortenerProvider.value === shortIo;
     if (isShortIo) {
       rowApiKey.classList.remove('d-none');
+      rowDomain.classList.remove('d-none');
     } else {
       rowApiKey.classList.add('d-none');
       apiKey.value = '';
+      rowDomain.classList.add('d-none');
+      domain.value = '';
     }
   });
 
-  const storage = storageSync.get(['apiKey', 'shortenerProvider']);
+  const storage = storageSync.get(['domain', 'apiKey', 'shortenerProvider']);
 
   storage.then((data) => {
     shortenerProvider.value = data.shortenerProvider;
     apiKey.value = data.apiKey;
+    domain.value = data.domain;
     const isShortIo = shortenerProvider.value === shortIo;
     if (isShortIo) {
       rowApiKey.classList.remove('d-none');
+      rowDomain.classList.remove('d-none');
     }
   });
 
@@ -51,6 +58,7 @@ window.onload = async () => {
     storageSync.set({
       apiKey: formData.get('apiKey'),
       shortenerProvider: formData.get('shortenerProvider'),
+      domain: formData.get('domain'),
     });
 
     const saveStatus = document.getElementById('save-status');
@@ -69,5 +77,7 @@ window.onload = async () => {
       .setAttribute('selected', true);
     rowApiKey.classList.add('d-none');
     apiKey.value = '';
+    rowDomain.classList.add('d-none');
+    domain.value = '';
   });
 };
