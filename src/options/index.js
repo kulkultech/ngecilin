@@ -1,7 +1,10 @@
 import footerTemplate from './templates/footer.hbs';
 import bodyTemplate from './templates/body.hbs';
+import buttonDomainTemplate from './templates/domain-modal-input-button.hbs';
+import errorTemplate from './templates/error.hbs';
 import { storageSync } from '../commons/helpers';
-import { shortIo, tinyURL } from '../commons/variables';
+import { shortIo } from '../commons/variables';
+import getShortIoDomain from './scripts/get-short-io-domain';
 
 document.addEventListener('DOMContentLoaded', () => {
   const wrapper = document.getElementById('ngecilin-options-wrapper');
@@ -27,12 +30,9 @@ window.onload = async () => {
     const isShortIo = shortenerProvider.value === shortIo;
     if (isShortIo) {
       rowApiKey.classList.remove('d-none');
-      rowDomain.classList.remove('d-none');
     } else {
       rowApiKey.classList.add('d-none');
       apiKey.value = '';
-      rowDomain.classList.add('d-none');
-      domain.value = '';
     }
   });
 
@@ -72,12 +72,40 @@ window.onload = async () => {
   });
 
   form.addEventListener('reset', () => {
-    shortenerProvider
-      .querySelector(`option[value=${tinyURL}]`)
-      .setAttribute('selected', true);
-    rowApiKey.classList.add('d-none');
-    apiKey.value = '';
-    rowDomain.classList.add('d-none');
+    window.location.reload();
+  });
+
+  // add domain
+  apiKey.addEventListener('input', () => {
+    if (apiKey.value) {
+      rowDomain.classList.remove('d-none');
+    } else {
+      rowDomain.classList.add('d-none');
+    }
     domain.value = '';
+  });
+
+  const domainModal = document.getElementById('domain-modal');
+  const modalBody = domainModal.querySelector('div[class*=modal-body]');
+
+  domain.addEventListener('click', async () => {
+    getShortIoDomain(apiKey.value)
+      .then((result) => {
+        const innerHtml = [];
+        result.forEach((customDomain) => {
+          innerHtml.push(buttonDomainTemplate({ value: customDomain }));
+        });
+        modalBody.innerHTML = innerHtml;
+
+        const listBtnDomain = modalBody.querySelectorAll('input[type=button]');
+        listBtnDomain.forEach((btnDomain) => {
+          btnDomain.addEventListener('click', () => {
+            domain.value = btnDomain.value;
+          });
+        });
+      })
+      .catch(() => {
+        modalBody.innerHTML = errorTemplate({ error: 'Domain not found' });
+      });
   });
 };

@@ -25,7 +25,7 @@ const shortenUrl = async (originalURL, alias) => {
 
   return new Promise((resolve, reject) => {
     axios
-      .post('https://api.short.cm/links/public/', data, options)
+      .post('https://api.short.cm/links/', data, options)
       .then((response) => {
         resolve(response.data.secureShortURL);
       })

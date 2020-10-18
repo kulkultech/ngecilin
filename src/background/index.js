@@ -19,7 +19,3 @@ chrome.runtime.onInstalled.addListener(async () => {
     }
   });
 });
-
-// chrome.storage.onChanged.addListener((changes, namespace) => {
-// chrome.notifications.create
-// });

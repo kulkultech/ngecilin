@@ -31,9 +31,10 @@ footer {
   text-align: center;
 }
 
+input:focus,
 .btn:focus {
   outline: none !important;
-  box-shadow: none;
+  box-shadow: none !important;
 }
 
 #save-status {
