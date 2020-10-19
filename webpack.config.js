@@ -56,6 +56,9 @@ const options = {
       {
         test: /\.hbs$/,
         loader: 'handlebars-loader',
+        options: {
+          helperDirs: path.resolve(__dirname, './src/options/templates/helpers'),
+        },
       },
     ],
   },
