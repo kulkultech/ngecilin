@@ -1,0 +1,47 @@
+<div class="row mb-3">
+  <div class="col-12 center">
+    <h1>
+      <img class="mb-2" src="/assets/icons/icn-kulkul-64.png" title="Ngecilin" alt="Ngecilin"><br>
+      <div>Ngecilin Extension Options</div>
+    </h1>
+  </div>
+</div>
+
+<form method="post" id="options-form">
+  <div class="row mb-3">
+    <div class="col-md-3">Shortener Provider</div>
+    <div class="col-md-8 form-group">
+      <select name="shortenerProvider" class="custom-select custom-select-sm">
+        <option value={{variables 'tinyURL'}}>TinyURL</option>
+        {{!-- <option value={{variables 'bitLy'}}>BitLy</option> --}}
+        <option value={{variables 'shortIo'}}>Short.io</option>
+      </select>
+    </div>
+  </div>
+  <div id="row-api-key" class="row d-none">
+    <div class="col-md-3">API Key <br><span style="font-style: italic;">(Private Key)</span></div>
+    <div class="col-md-8 form-group">
+      <textarea class="form-control" name="apiKey" cols="50" rows="5"></textarea>
+      <span data-type="validation"></span>
+    </div>
+  </div>
+  <div id="row-domain" class="row d-none">
+    <div class="col-md-3">Domain</div>
+    <div class="col-md-8 form-group">
+      <select name="domain" class="custom-select custom-select-sm">
+        <option>loading...</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 d-flex">
+      <button class="btn btn-sm btn-primary" type="submit">
+        Save
+      </button>
+      <button class="btn btn-sm btn-secondary ml-2 mr-2" type="reset">
+        Reset
+      </button>
+      <span id="save-status" style="display:none">Options saved.</span>
+    </div>
+  </div>
+</form>

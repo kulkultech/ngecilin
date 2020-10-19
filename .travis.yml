@@ -1,7 +1,11 @@
 _test_scripts: &_test_scripts
-  script:
-    - yarn dev:setup
-    - yarn build
+  - yarn dev:setup
+  - yarn build
+
+_deploy_scripts: &_deploy_scripts
+  - *_test_scripts
+  - zip -r public.zip dist/
+  - ./publish.sh
 
 cache:
   yarn: true
@@ -10,4 +14,21 @@ cache:
 
 language: node_js
 node_js: "10"
-<<: *_test_scripts
+
+jobs:
+  include:
+    - stage: test
+      script: *_test_scripts
+    - stage: deploy
+      before_script:
+        - sudo apt-get update
+        - sudo apt-get install -y jq curl zip
+      script: *_deploy_scripts
+      if: branch = master AND type = push AND fork = false
+
+env:
+  global:
+    - secure: i0Zhqe4V5o5X3llRd25Cty3NfQLbwR8vAmUfBele2hw9EhkkwOaM+BMV8YRC/ZWXRNeg077kA6/mnQURZG3m+ARlgzhvEX6+d+AYDlvMFoxo90MpSDVNeM22TBv3IV6w6REgrQ7kADwW8gZilad7wKYamsfNLx1/8RKngliaNQMRTd1yWEbCBlxbXelp3UIPdT9QmjV7APNhWl1kJeUpEJj2xepZlvW3UYru7AycSXAwL0Jt9EHCSdRKIhb2VfTlRRA7NTYog4m4tRSjQtuQrsTchCbCfJH6VLvbyL1uJflltFvOyivD5jxoCaO3r/3QfEgX5WjOzRDSPVayrzSY9TjC+3DipF+saFVjrNE14BkqHuVq37WGf78Xf7dXaLvkkBLo84Rx26YbRz3G7Fx+YkFOrJaG4CwPKRc7Jl1T95OdWPjAg2osxtXUe6jo7ibMPIiI8j0lDYo7CHKt0eUejHEXjXlX+5mvPbFE5oHqyj8G3T1UW8W9MfC08ZKtuHGIrvArnHUfvyDBxMfH+RO81c3wXFq+GMMWvHiqpzGwKtmShab2XWikn8XV30d/gO1FkylJaQlxnfmO3bMYzLwK/tydp6rAdHM6p6HYRQYRcql5i7uv/JUeDPzeolGmTL8+xqu0EQhLzf0KnjKoxvtt9S4dBLk9huHbayjr6CSIbu0=
+    - secure: ABBB4KlClOZANkEgj1xfdrs1noyYkuCYdvD1DC+JkoSwScTjl76f4Wb7f+mQgBNmnicU1Wipsl6yvqa3dq5jRD835TLVQaYUCJzdcXq0EdY+LSZ/kPZzapXDtbvKCmEfFVibBLlerWFtdD5WO5gIQAs6Ho58C6HWRgZhZaHN/tq7QA0sUb0R3OIsglUDyWcDd9MVJlyaTcBKI9BcrfT+WMunmwcCGQSHhByU/TrRBP3SD/Z+f9HgdT2dxW2o9dDLRmbFpaVMSmlUqCdyMVQZBYQjKtS14hthN/dXtWneDYgvIvnkBevnLCMVRGT01lgHLRL3hG9EGfeFm9LvHdlXbEaRON3Z3FO1z0JvvVY5kcwGCbmm/2qDWZfbHjBgNFCXMjWVDdgYyjt99XlxsfXf229ICqyOrmBCY9dASPwSPCfzZDl5OQjKPsgZHT9eZF8JoAi3oZGXVTlsxoXPB9Kb1PsWWWd1P0ec+CwY34fmCcto80/oZQ0+UY32v+g+pcwogi8ViWNmowj3zAROIz/skUKkIJ5xjTTpk0w/X2ywQB2/3q9nuN3/7exxhZHEaYG2Ks3hLASvIDVRSRiG/Acbx//yt6ZeFI+D3ncqb7iyb2Tpv9PfON6X3zQ/CMpQ4vCZBnIoxRg/dqc3d6adEujkUgM8fxmFYZkw6re8LPewYFo=
+    - secure: aJcr8T606XX+lK0hiTLUDWisywpCy2+Sdlq6Yxt8pgj0H59cUMMsOCp8Ph2CNm5wgtldsiAJ/+3d5tTnR3V5zlNud5FACQEe+NpQ4VQRcR2Uh2ksAUhWjdZ5eT8xlaP2mMOATMR8L96wZojZW2giMI6K6TE+snN9P0u4Su4RMHLv24Z7owNq6Vdg3nmP3iYRf0KNAdK1JEEQtfZMaT15oAlFfcUr/005lyUFALNi4H11u9VFqwdX+rwL9A2iYggf3JRvrbj6DrMyFM755kfN+Juz4NIkaiAipJKCFrN8F0S3drugVpug1Yk6d8Fmt1T3hEP8SFeyvaB6z8g5hgrKVId4clqDhI8VwZECnMim+HaiJ1zxqyGi/sXe0YcZRtilx/59d1vbXD6AniJR/rZZrxuJKjrG9ealIIJbh3IiS8Ue9NqesP8h0VcvDG/MKQNmAoou0pLYlAOK6jqyyKFexmac+wA2+MOWqgkBkf79xNUQIslLsqUoXfy8tqh++ZKcCiJhoFN38nCmksZxqQ8N6Ypke/ixdPH04KN95aUWTbP2/sQKxNnNuakoASMWrcYBHiWk1rfXhRF3tgq2RQkS1n1/lyWsCT8LOUN+bhn8gPVaM25xAHCyte6a2WO5BLUGag6Csr+kl2DGbwFsErfNBbwEyoeN3GnDt4CIakB9kD8=
+    - secure: ThC3JSFPi9/k6sXGG0vk7Rf7wXVdj/PLXh5UubOdSOWrw+6rM+J3M+CAPKNSm90kp5YyuGOY4ULah9tWo9RUGlnMS9v9mRTBmZENhglcuj6858QR/Zjk/z5q4EEw6mIUyV9p5ZRUMuIeN/0hYwKTJA8iLdvvUMWsklL51CSraapMjJYyHiLE8kp1i6qpGt+0I6OXabfiOXfDJWq9UwZB3y3PevUWytcpCnKVBLUc8mJsnpnXISD5VJ94dhk1kBGLjmiR6ThIsS0FHhQX9utPBtfAH4SzTpc0V4ChWhsWigQ1UE4lQ5vYnV2TYQ5aJySP8holWu0tJ6RLePSXPl40+qYBQ+vrUahQgPtizbD1BPJQsrExz+3pIXP/xTewbRYxZTcjWjJ2PR0NwahxZG9F3suc8DgEpeiuMTjfdIFfukjhNaBwREnkwUXjO5tCTx4MhfJjIRTPQwEHn4RnLkZLhJmFRihNFTdfwlqxD49ZTmtjfCoNsX03RJFNtIQuOMbZtlitdxdyW+7SLWJL912lOarLqprr295nOHzVgJLh/dlDiIEsEDIJE1J27JXoYYJ60HKo11ao3nmYYg5+CNBoLSaawoNQE6rCiV1y7vtdA3Vi76cum1kxi+C/2sqlYOxvH6Nsb8Xc5ZZUvtDroRic4Q8ItMIZQ0bT34BBLttkAQo=

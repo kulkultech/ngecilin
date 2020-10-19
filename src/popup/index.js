@@ -19,14 +19,24 @@ document.addEventListener('DOMContentLoaded', () => {
     shortenText.value = tab.url;
   });
 
-  shortenBtn.addEventListener('click', async (e) => {
-    wrapper.querySelector('#shorten').innerHTML = 'loading...';
-    shortenUrl(shortenText.value, shortenAlias.value).then((result) => {
-      wrapper.querySelector('#shorten').innerHTML = shortenTemplate({ shortenurl: result });
-    }).catch(() => {
-      wrapper.querySelector('#shorten').innerHTML = errorTemplate({ error: "Alias can't be used or already taken" });
-    });
-  }, false);
+  shortenBtn.addEventListener(
+    'click',
+    async () => {
+      wrapper.querySelector('#shorten').innerHTML = 'loading...';
+      shortenUrl(shortenText.value, shortenAlias.value)
+        .then((result) => {
+          wrapper.querySelector('#shorten').innerHTML = shortenTemplate({
+            shortenurl: result,
+          });
+        })
+        .catch(() => {
+          wrapper.querySelector('#shorten').innerHTML = errorTemplate({
+            error: "Alias can't be used or already taken",
+          });
+        });
+    },
+    false,
+  );
 
   const footer = document.querySelector('footer');
   footer.innerHTML = footerTemplate({ year: new Date().getFullYear() });

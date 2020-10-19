@@ -1,13 +1,21 @@
+import { tinyURL } from '../commons/variables';
+import { storageSync } from '../commons/helpers';
 
-chrome.browserAction.onClicked.addListener(function (tab) {
-  alert('jos');
-  // console.log('Injecting content script(s)');
-  // //On Firefox document.body.textContent is probably more appropriate
-  // chrome.tabs.executeScript(tab.id, {
-  //   code: 'document.body.innerText;'
-  //   //If you had something somewhat more complex you can use an IIFE:
-  //   //code: '(function (){return document.body.innerText;})();'
-  //   //If your code was complex, you should store it in a
-  //   // separate .js file, which you inject with the file: property.
-  // }, receiveText);
+/**
+ * Fired when the extension is first installed,
+ * when the extension is updated to a new version,
+ * and when Chrome is updated to a new version.
+ */
+chrome.runtime.onInstalled.addListener(async () => {
+  const storage = storageSync.get(['shortenerProvider']);
+
+  storage.then((data) => {
+    if (!data.shortenerProvider) {
+      storageSync.set({
+        shortenerProvider: tinyURL,
+        domain: '',
+        apiKey: '',
+      });
+    }
+  });
 });
