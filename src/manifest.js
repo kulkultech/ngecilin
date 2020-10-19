@@ -7,8 +7,7 @@ const manifest = {
   description: 'Chrome Extension to shorten your looooong URL.',
   manifest_version: 2,
   permissions: ['tabs', 'activeTab', 'storage', '*://api.short.cm/*'], // simply add *://api.short.cm/* to fixed CORS issue
-  content_security_policy:
-    "script-src 'self' https://code.jquery.com https://cdnjs.cloudflare.com https://maxcdn.bootstrapcdn.com; object-src 'self'",
+  content_security_policy: "script-src 'self'; object-src 'self'",
   options_page: 'options/index.html',
   background: {
     scripts: ['background/index.js'],

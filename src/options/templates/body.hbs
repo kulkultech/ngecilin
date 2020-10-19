@@ -9,7 +9,7 @@
 
 <form method="post" id="options-form">
   <div class="row mb-3">
-    <div class="col-md-3">Shortener provider</div>
+    <div class="col-md-3">Shortener Provider</div>
     <div class="col-md-8 form-group">
       <select name="shortenerProvider" class="custom-select custom-select-sm">
         <option value={{variables 'tinyURL'}}>TinyURL</option>
@@ -19,17 +19,18 @@
     </div>
   </div>
   <div id="row-api-key" class="row d-none">
-    <div class="col-md-3">API Key</div>
+    <div class="col-md-3">API Key <br><span style="font-style: italic;">(Private Key)</span></div>
     <div class="col-md-8 form-group">
       <textarea class="form-control" name="apiKey" cols="50" rows="5"></textarea>
+      <span data-type="validation"></span>
     </div>
   </div>
   <div id="row-domain" class="row d-none">
     <div class="col-md-3">Domain</div>
     <div class="col-md-8 form-group">
-      <input readonly type="text" name="domain" placeholder="API Key (required)" class="form-control"
-        data-toggle="modal" data-target="#domain-modal" />
-      {{> domain-modal id="domain-modal" }}
+      <select name="domain" class="custom-select custom-select-sm">
+        <option>loading...</option>
+      </select>
     </div>
   </div>
   <div class="row">
