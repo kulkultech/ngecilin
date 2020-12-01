@@ -6,7 +6,7 @@ const manifest = {
   version: process.env.VERSION,
   description: 'Chrome Extension to shorten your looooong URL.',
   manifest_version: 2,
-  permissions: ['tabs', 'activeTab', 'storage', '*://api.short.cm/*'], // simply add *://api.short.cm/* to fixed CORS issue
+  permissions: ['tabs', 'storage', '*://api.short.cm/*'], // simply add *://api.short.cm/* to fixed CORS issue
   content_security_policy: "script-src 'self'; object-src 'self'",
   options_page: 'options/index.html',
   background: {
