@@ -13,15 +13,22 @@
     <div class="col-md-8 form-group">
       <select name="shortenerProvider" class="custom-select custom-select-sm">
         <option value={{variables 'tinyURL'}}>TinyURL</option>
-        {{!-- <option value={{variables 'bitLy'}}>BitLy</option> --}}
+        <option value={{variables 'bitLy'}}>BitLy</option>
         <option value={{variables 'shortIo'}}>Short.io</option>
       </select>
+    </div>
+  </div>
+  <div id="row-bitly-token" class="row d-none">
+    <div class="col-md-3">Token <br><span style="font-style: italic;">(BitLy Token)</span></div>
+    <div class="col-md-8 form-group">
+      <input type="password" class="form-control" name="bitLyToken" />
+      <span data-type="validation"></span>
     </div>
   </div>
   <div id="row-api-key" class="row d-none">
     <div class="col-md-3">API Key <br><span style="font-style: italic;">(Private Key)</span></div>
     <div class="col-md-8 form-group">
-      <input type="password" class="form-control" name="apiKey" required />
+      <input type="password" class="form-control" name="apiKey" />
       <span data-type="validation"></span>
     </div>
   </div>

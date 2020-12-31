@@ -7,6 +7,10 @@ export const storageSync = {
     new Promise((resolve) => {
       chrome.storage.sync.set(obj, (data) => resolve(data));
     }),
+  clear: async () =>
+    new Promise((resolve) => {
+      chrome.storage.sync.set({}, (data) => resolve(data));
+    }),
 };
 
 export default { storageSync };

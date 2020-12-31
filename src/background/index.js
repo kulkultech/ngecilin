@@ -15,6 +15,7 @@ chrome.runtime.onInstalled.addListener(async () => {
         shortenerProvider: tinyURL,
         domain: '',
         apiKey: '',
+        bitLyToken: '',
       });
     }
   });
