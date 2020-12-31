@@ -3,7 +3,7 @@ import bodyTemplate from './templates/body.hbs';
 import optionDomainTemplate from './templates/option-domain.hbs';
 import errorTemplate from './templates/error.hbs';
 import { storageSync } from '../commons/helpers';
-import { shortIo } from '../commons/variables';
+import { shortIo, bitLy } from '../commons/variables';
 import getShortIoDomain from './scripts/get-short-io-domain';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -20,28 +20,37 @@ document.addEventListener('DOMContentLoaded', () => {
 window.onload = async () => {
   const rowApiKey = document.getElementById('row-api-key');
   const rowDomain = document.getElementById('row-domain');
-  const apiKey = rowApiKey.querySelector('textarea');
+  const rowBitLyToken = document.getElementById('row-bitly-token');
+  const apiKey = rowApiKey.querySelector('input');
   const domain = rowDomain.querySelector('select[name=domain]');
+  const bitLyToken = rowBitLyToken.querySelector('input');
   const shortenerProvider = document.querySelector(
     'select[name=shortenerProvider]',
   );
 
   shortenerProvider.addEventListener('change', () => {
     const isShortIo = shortenerProvider.value === shortIo;
+    const isBitLy = shortenerProvider.value === bitLy;
+
+    rowApiKey.classList.add('d-none');
+    rowDomain.classList.add('d-none');
+    rowBitLyToken.classList.add('d-none');
+
     if (isShortIo) {
       rowApiKey.classList.remove('d-none');
+    } else if (isBitLy) {
+      rowBitLyToken.classList.remove('d-none');
     } else {
-      rowApiKey.classList.add('d-none');
-      rowDomain.classList.add('d-none');
       apiKey.value = '';
       domain.value = '';
       domain.innerHTML = '';
     }
   });
 
-  const storage = storageSync.get(['domain', 'apiKey', 'shortenerProvider']);
+  const storage = storageSync.get(['domain', 'apiKey', 'bitLyToken', 'shortenerProvider']);
 
   const callDomainOption = (privateKey, { defaultValue }) =>
+    // eslint-disable-next-line implicit-arrow-linebreak
     getShortIoDomain(privateKey)
       .then((result) => {
         const innerHtml = [];
@@ -76,10 +85,15 @@ window.onload = async () => {
     shortenerProvider.value = data.shortenerProvider;
     apiKey.value = data.apiKey;
     domain.value = data.domain;
+    bitLyToken.value = data.bitLyToken;
     const isShortIo = shortenerProvider.value === shortIo;
+    const isBitLy = shortenerProvider.value === bitLy;
     if (isShortIo) {
       rowApiKey.classList.remove('d-none');
       callDomainOption(data.apiKey, { defaultValue: data.domain });
+    }
+    if (isBitLy) {
+      rowBitLyToken.classList.remove('d-none');
     }
   });
 
@@ -89,10 +103,12 @@ window.onload = async () => {
     e.preventDefault();
     const formData = new FormData(form);
 
+    storageSync.clear();
     storageSync.set({
       apiKey: formData.get('apiKey'),
       shortenerProvider: formData.get('shortenerProvider'),
       domain: formData.get('domain'),
+      bitLyToken: formData.get('bitLyToken'),
     });
 
     const saveStatus = document.getElementById('save-status');

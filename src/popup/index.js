@@ -1,14 +1,19 @@
+import { storageSync } from '../commons/helpers';
+import { bitLy } from '../commons/variables';
 import formTemplate from './templates/form.hbs';
 import shortenTemplate from './templates/shorten.hbs';
 import footerTemplate from './templates/footer.hbs';
 import errorTemplate from './templates/error.hbs';
 import shortenUrl from './scripts/shorten-url';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  const { shortenerProvider } = await storageSync.get(['shortenerProvider']);
   const wrapper = document.getElementById('ngecilin-wrapper');
   const form = document.createElement('div');
 
-  form.innerHTML = formTemplate();
+  const aliasDisabled = shortenerProvider === bitLy ? 'disabled' : '';
+
+  form.innerHTML = formTemplate({ isDisabled: aliasDisabled });
   wrapper.appendChild(form);
 
   const shortenText = document.querySelector('#form>input[name=url]');

@@ -1,6 +1,6 @@
 {
   "name": "@kulkul/ngecilin",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Chrome Extension to shorten your looooong URL",
   "main": "index.js",
   "repository": "git@github.com:kulkultech/ngecilin.git",
@@ -19,6 +19,7 @@
     "gen:id": "openssl rsa -in key/key.pem -pubout -outform DER | shasum -a 256 | head -c32 | tr 0-9a-f a-p"
   },
   "dependencies": {
+    "@kulkul/bitly-client": "^1.0.0",
     "@kulkul/tinyurl-client": "^1.0.7",
     "axios": "^0.20.0",
     "dotenv": "^8.2.0",
