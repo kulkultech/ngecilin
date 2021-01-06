@@ -21,7 +21,7 @@
   "dependencies": {
     "@kulkul/bitly-client": "^1.0.0",
     "@kulkul/tinyurl-client": "^1.0.7",
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
