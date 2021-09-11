@@ -2,7 +2,7 @@
 require('dotenv').config();
 
 const manifest = {
-  name: 'Ngecilin Extension',
+  name: 'Ngecilin: Shorten Your Long URLs',
   version: process.env.VERSION,
   description: 'Chrome Extension to shorten your looooong URL.',
   manifest_version: 2,
@@ -16,7 +16,7 @@ const manifest = {
   web_accessible_resources: [],
   content_scripts: [],
   browser_action: {
-    default_title: 'Ngecilin Extension',
+    default_title: 'Ngecilin: Shorten Your Long URLs',
     default_icon: {
       16: 'assets/icons/icon-ngecilin-16.png',
       32: 'assets/icons/icon-ngecilin-32.png',
