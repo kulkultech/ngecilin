@@ -58,10 +58,10 @@
   resolved "https://registry.yarnpkg.com/@kulkul/bitly-client/-/bitly-client-1.0.0.tgz#0f7906bd2e63e767d0271a759f2fbe24e1f2289f"
   integrity sha512-hqR1D9ORcKftYUtj5BWeqqNQ3bC661M2RTrfxSpt3NIpQfDpAjTQWZWsMqxhox5YkNGcUzoR1Ck/QNbzu3EajQ==
 
-"@kulkul/tinyurl-client@^1.0.7":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@kulkul/tinyurl-client/-/tinyurl-client-1.0.7.tgz#b6accaad871e5d8ddc9b01ff0b206e40b0ea7b6e"
-  integrity sha512-MWTs55Wt8Kl/JdDlXfugtTIjACqKMOIpz//DskG9EA0v2tPeNTyyvL8w3mTpSvyVlIzmuvqgB/RcvglZc2mDtw==
+"@kulkul/tinyurl-client@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@kulkul/tinyurl-client/-/tinyurl-client-1.0.8.tgz#4504690a63266d80326e6a513a61092cc871ff6c"
+  integrity sha512-gLsl29ty3Xq3h2/mF48nmUbFA8fyE7n8+q6xxdVrVa1GSauNHNclkv6F0lE7zbAmz9cdOBv4BbuWL7/s8ete4g==
 
 "@nodelib/fs.scandir@2.1.3":
   version "2.1.3"

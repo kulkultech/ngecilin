@@ -47,7 +47,12 @@ window.onload = async () => {
     }
   });
 
-  const storage = storageSync.get(['domain', 'apiKey', 'bitLyToken', 'shortenerProvider']);
+  const storage = storageSync.get([
+    'domain',
+    'apiKey',
+    'bitLyToken',
+    'shortenerProvider',
+  ]);
 
   const callDomainOption = (privateKey, { defaultValue }) =>
     // eslint-disable-next-line implicit-arrow-linebreak
